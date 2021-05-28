@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   node: circleci/node@4.1
+  sonarcloud: sonarsource/sonarcloud@1.0.1
 
 
 jobs:
@@ -16,8 +17,18 @@ jobs:
       - run:
           name: Test
           command: cd ./src &&  npm run test
+  sonar:
+    docker:
+      - image: node:14-alpine
+    steps:
+      - checkout
+      - run:
+          name: Install
+          command: cd ./src && npm install
+      - sonarcloud/scan
       
 workflows:
   test: 
     jobs:
       - test
+      - sonar
