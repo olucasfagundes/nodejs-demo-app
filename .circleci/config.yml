@@ -11,8 +11,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Test
-          command: cd ./src && npm run test
+          name: Install
+          command: cd ./src && npm install
       
 workflows:
   test: 
