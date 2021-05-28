@@ -11,7 +11,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install
+          name: Install dependencies
           command: cd ./src && npm install
       - run:
           name: Test
@@ -23,8 +23,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install
-          command: cd ./src && npm install
+          name: Install dependencies
+          command: cd ./src && apk add curl && npm install
       - sonarcloud/scan
       
 workflows:
