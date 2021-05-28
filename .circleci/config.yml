@@ -10,8 +10,8 @@ jobs:
       - image: cimg/node:16.2.0
     steps:
       - checkout
-      - node/install-packages
-        app-dir: ./src
+      - node/install-packages:
+          app-dir: ./src
       - run: 
           name: Test
           command: npm run test
