@@ -15,7 +15,7 @@ jobs:
           command: cd ./src && npm install
       - run:
           name: Test
-          command: npm run test
+          command: cd ./src &&  npm run test
       
 workflows:
   test: 
