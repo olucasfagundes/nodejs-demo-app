@@ -31,5 +31,7 @@ workflows:
   test: 
     jobs:
       - test
+  sonar:
+    jobs:
       - sonar:
-        context: SonarCloud
+          context: SonarCloud
