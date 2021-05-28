@@ -4,7 +4,6 @@ orbs:
   node: circleci/node@4.1
   sonarcloud: sonarsource/sonarcloud@1.0.1
 
-
 jobs:
   test:  
     docker:
@@ -17,6 +16,7 @@ jobs:
       - run:
           name: Test
           command: cd ./src &&  npm run test
+
   sonar:
     docker:
       - image: node:14-alpine
@@ -31,4 +31,5 @@ workflows:
   test: 
     jobs:
       - test
-      - sonar
+      - sonar:
+        context: SonarCloud
