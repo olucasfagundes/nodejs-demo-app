@@ -1,28 +1,29 @@
 version: 2.1
 
 orbs:
-  node: circleci/node@4.4.0
-  sonarcloud: sonarsource/sonarcloud@1.0.2
+  sonarcloud: sonarsource/sonarcloud@1.0.1
 
 jobs:
   test:  
     docker:
-      - image: cimg/node:16.2.0
+      - image: node:14-alpine
     steps:
       - checkout
-      - node/install-packages:
-          app-dir: ./src
-      - run: 
+      - run:
+          name: Install dependencies
+          command: cd ./src && npm install
+      - run:
           name: Test
-          command: npm run test
+          command: cd ./src &&  npm run test
 
   sonar:
     docker:
-      - image: cimg/node:16.2.0
+      - image: node:14-alpine
     steps:
       - checkout
-      - node/install-packages:
-          app-dir: ./src
+      - run:
+          name: Install dependencies
+          command: cd ./src && apk add curl && npm install
       - sonarcloud/scan
       
 workflows:
