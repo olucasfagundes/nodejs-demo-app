@@ -10,12 +10,11 @@ jobs:
       - image: node:14-alpine
     steps:
       - checkout
-      - run:
-          name: Install dependencies
-          command: cd ./src && npm install
-      - run:
+      - node/install-packages:
+          app-dir: ./src
+      - run: 
           name: Test
-          command: cd ./src &&  npm run test
+          command: npm run test
 
   sonar:
     docker:
