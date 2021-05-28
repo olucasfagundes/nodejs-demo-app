@@ -6,9 +6,9 @@ orbs:
 
 jobs:
   test:  
-    working_directory: ~/project/src
+    working_directory: ~/src
     docker:
-      - image: node:14-alpine
+      - image: cimg/node:16.2.0
     steps:
       - checkout
       - node/install-packages
@@ -18,12 +18,11 @@ jobs:
 
   sonar:
     docker:
-      - image: node:14-alpine
+      - image: cimg/node:16.2.0
     steps:
       - checkout
-      - run:
-          name: Install dependencies
-          command: cd ./src && apk add curl && npm install
+      - node/install-packages:
+          app-dir: ~/.src
       - sonarcloud/scan
       
 workflows:
