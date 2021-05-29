@@ -92,7 +92,7 @@ workflows:
             - sonar
       - docker/publish:
           context: DockerHub
-          image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME:latest
+          image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
           requires:
             - docker/hadolint
             - docker-security
