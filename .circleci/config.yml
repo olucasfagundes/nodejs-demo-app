@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  docker: circleci/docker@1.6.0
+
 jobs:
   test:  
     docker:
@@ -41,3 +44,6 @@ workflows:
       - lint
       - sonar:
           context: SonarCloud
+  deploy:
+    jobs:
+      - docker/hadolint
