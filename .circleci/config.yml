@@ -15,7 +15,7 @@ jobs:
       - save_cache: 
           key: pkgs
           paths:
-            - node_modules
+            - ./src
 
   test:  
     docker:
@@ -36,7 +36,7 @@ jobs:
       - checkout
       - restore_cache:
           keys: 
-            - pkgs{{ checksum "package-lock.json" }}
+            - pkgs
       - run:
           name: Lint
           command: cd ./src; npm run lint
