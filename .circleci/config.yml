@@ -13,7 +13,7 @@ jobs:
           name: Install node pkgs
           command: cd ./src; npm install
       - save_cache: 
-          key: pkgs-{{ checksum "package-lock.json" }}
+          key: pkgs-{{ checksum "./src/package-lock.json" }}
           paths:
             - ./src
 
@@ -24,7 +24,7 @@ jobs:
       - checkout
       - restore_cache:
           keys: 
-            - pkgs-{{ checksum "package-lock.json" }}
+            - pkgs-{{ checksum "./src/package-lock.json" }}
       - run:
           name: Test
           command: cd ./src; npm run test
@@ -36,7 +36,7 @@ jobs:
       - checkout
       - restore_cache:
           keys: 
-            - pkgs-{{ checksum "package-lock.json" }}
+            - pkgs-{{ checksum "./src/package-lock.json" }}
       - run:
           name: Lint
           command: cd ./src; npm run lint
