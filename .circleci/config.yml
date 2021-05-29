@@ -86,8 +86,6 @@ workflows:
             - lint
             - sonar
       - docker-security:
-          requires:
-            - docker/hadolint
       - docker/publish:
           context: DockerHub
           image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
