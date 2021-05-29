@@ -4,6 +4,19 @@ orbs:
   docker: circleci/docker@1.6.0
 
 jobs:
+  install-packages:  
+    docker:
+      - image: node:14-alpine
+    steps:
+      - checkout
+      - run:
+          name: Install node pkgs
+          command: cd ./src; npm install
+      - save_cache: 
+          key: pkgs
+          paths:
+            - node_modules
+
   test:  
     docker:
       - image: node:14-alpine
@@ -11,14 +24,7 @@ jobs:
       - checkout
       - restore_cache:
           keys: 
-            - pkgs{{ checksum "package-lock.json" }}
-      - run:
-          name: Install node pkgs
-          command: cd ./src; npm install
-      - save_cache: 
-          key: pkgs{{ checksum "package-lock.json" }}
-          paths:
-            - node_modules
+            - pkgs
       - run:
           name: Test
           command: cd ./src; npm run test
@@ -65,8 +71,13 @@ jobs:
 workflows:
   build: 
     jobs:
-      - test
-      - lint
+      - install-packages
+      - test:
+          requires:
+            - install-packages
+      - lint:
+          requires:
+            - install-packages
       - sonar:
           context: SonarCloud
       - docker/hadolint:
