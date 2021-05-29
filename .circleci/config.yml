@@ -19,6 +19,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Install node pkgs
+          command: cd ./src; npm install
+      - run:
           name: Lint
           command: cd ./src; npm run lint
 
