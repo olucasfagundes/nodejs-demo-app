@@ -40,4 +40,4 @@ workflows:
       - test
       - lint
       - sonar:
-          context: Sonarcloud
+          context: SonarCloud
