@@ -8,19 +8,22 @@ jobs:
       - checkout
       - run:
           name: Install node pkgs
-          command: cd ./src && npm install
+          command: cd ./src; npm install
       - run:
           name: Test
-          command: cd ./src &&  npm run test
+          command: cd ./src; npm run test
 
   sonar:
     docker:
-      - image: node:14-alpine
+      - image: sonarsource/sonar-scanner-cli
     steps:
       - checkout
       - run:
           name: Install dependencies
-          command: cd ./src && npm test
+          command: sonar-scanner \
+                  -Dsonar.organization=olucasfagundes \
+                  -Dsonar.projectKey=olucasfagundes_nodejs-demo-app \
+                  -Dsonar.host.url=https://sonarcloud.io
                 
 workflows:
   test: 
