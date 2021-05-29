@@ -2,6 +2,8 @@
 
 [![<olucasfagundes>](https://circleci.com/gh/olucasfagundes/nodejs-demo-app.svg?style=svg)](<LINK>)
 
+[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)](https://sonarcloud.io/dashboard?id=nodejs-demo-app)
+
 This is a simple Node.js web app using the Express framework and EJS templates.
 
 The app has been designed with cloud native demos & containers in mind, in order to provide a real working application for deployment, something more than "hello-world" but with the minimum of pre-reqs. It is not intended as a complete example of a fully functioning architecture or complex software design.
