@@ -35,11 +35,9 @@ jobs:
           command: sonar-scanner
                 
 workflows:
-  test: 
+  build: 
     jobs:
       - test
       - lint
-  sonar:
-    jobs:
       - sonar:
-          context: SonarCloud
+          context: Sonarcloud
