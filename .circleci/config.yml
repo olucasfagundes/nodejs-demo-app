@@ -85,7 +85,7 @@ workflows:
             - test
             - lint
             - sonar
-      - docker-security:
+      - docker-security
       - docker/publish:
           context: DockerHub
           image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
