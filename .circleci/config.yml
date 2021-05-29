@@ -36,6 +36,24 @@ jobs:
       - run:
           name: Sonar scan
           command: sonar-scanner
+          
+  docker-security:
+    docker:
+      - image: docker:18.09-git
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Build image to check
+          command: docker build -t $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Install AquaSec Trivy 
+          command: |
+            apk add --update-cache --upgrade --update curl
+            curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
+      - run:
+          name: Scan Docker Image for vulnerabilities
+          command: trivy --exit-code 0 --no-progress $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
                 
 workflows:
   build: 
@@ -49,9 +67,12 @@ workflows:
             - test
             - lint
             - sonar
+      - docker-security:
+          requires:
+            - docker/hadolint
       - docker/publish:
           context: DockerHub
           image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
           requires:
-            - docker/hadolint
+            - docker-security
           
