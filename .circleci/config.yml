@@ -1,8 +1,5 @@
 version: 2.1
 
-orbs:
-  sonarcloud: sonarsource/sonarcloud@1.0.1
-
 jobs:
   test:  
     docker:
@@ -10,7 +7,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install dependencies
+          name: Install node pkgs
           command: cd ./src && npm install
       - run:
           name: Test
@@ -23,9 +20,8 @@ jobs:
       - checkout
       - run:
           name: Install dependencies
-          command: cd ./src && apk add curl && npm install
-      - sonarcloud/scan
-      
+          command: cd ./src && npm test
+                
 workflows:
   test: 
     jobs:
