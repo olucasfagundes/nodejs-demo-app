@@ -44,6 +44,8 @@ workflows:
       - lint
       - sonar:
           context: SonarCloud
-  deploy:
-    jobs:
-      - docker/hadolint
+      - docker/hadolint:
+          requires:
+            - test
+            - lint
+            - sonar
