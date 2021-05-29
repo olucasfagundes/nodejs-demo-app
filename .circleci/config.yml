@@ -50,6 +50,7 @@ workflows:
             - lint
             - sonar
       - docker/publish:
+          context: DockerHub
           image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
           update-description: true
           requires:
