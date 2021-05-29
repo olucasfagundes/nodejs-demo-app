@@ -19,10 +19,11 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install dependencies
-          command: sonar-scanner \
+          name: Sonar scan
+          command: | 
+                  sonar-scanner \
                   -Dsonar.organization=olucasfagundes \
-                  -Dsonar.projectKey=olucasfagundes_nodejs-demo-app \
+                  -Dsonar.projectKey=nodejs-demo-app \
                   -Dsonar.host.url=https://sonarcloud.io
                 
 workflows:
