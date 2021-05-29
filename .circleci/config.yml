@@ -13,7 +13,7 @@ jobs:
           name: Install node pkgs
           command: cd ./src; npm install
       - save_cache: 
-          key: pkgs-{{ checksum "package-lock.json" }}
+          key: pkgs-{{ checksum "./src/package-lock.json" }}
           paths:
             - ./src
 
