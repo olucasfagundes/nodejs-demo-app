@@ -21,6 +21,10 @@
 
 ### 🏠 [Homepage](https://github.com/olucasfagundes/nodejs-demo-app)
 
+## CI Overview
+![CICD](./docs/ci.png)
+
+
 
 ## Install
 
