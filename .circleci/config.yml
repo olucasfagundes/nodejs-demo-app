@@ -93,6 +93,7 @@ workflows:
       - docker/publish:
           context: DockerHub
           image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
+          tag: latest
           requires:
             - docker/hadolint
             - docker-security
