@@ -19,7 +19,7 @@
 
 > This is a simple Node.js web app using the Express framework and EJS templates. The app has been designed with cloud native demos & containers in mind, in order to provide a real working application for deployment, something more than "hello-world" but with the minimum of pre-reqs. It is not intended as a complete example of a fully functioning architecture or complex software design.
 
-### 🏠 [Homepage](https://github.com/olucasfagundes/nodejs-demo-app)
+### 📦 [Docker Hub Repository](https://hub.docker.com/r/olucasfagundes/nodejs-demo-app/tags?page=1&ordering=last_updated)
 
 ## CI Overview
 ![CICD](./docs/ci.png)
