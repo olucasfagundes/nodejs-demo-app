@@ -89,7 +89,6 @@ workflows:
           requires:
             - test
             - lint
-            - sonar
       - docker/publish:
           context: DockerHub
           image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
@@ -97,3 +96,4 @@ workflows:
           requires:
             - docker/hadolint
             - docker-security
+            - sonar
