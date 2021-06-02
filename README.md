@@ -22,6 +22,9 @@
 ### 📦 [Docker Hub Repository](https://hub.docker.com/r/olucasfagundes/nodejs-demo-app/tags?page=1&ordering=last_updated)
 
 ## CI Overview
+  
+[CircleCI Pipeline](https://app.circleci.com/pipelines/github/olucasfagundes/nodejs-demo-app/)
+
 ![CICD](./docs/ci.png)
 
 
