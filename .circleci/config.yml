@@ -84,7 +84,6 @@ workflows:
           requires:
             - test
             - lint
-            - sonar
       - docker-security:
           requires:
             - test
